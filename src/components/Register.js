@@ -22,8 +22,11 @@ class RegistrationForm extends Component {
             <Form {...formItemLayout}>
                 <Form.Item label="Username">{
                     getFieldDecorator("username", {
-                        required: true,
-                        message: 'Please input your username!',
+                        rules: [{
+                            required: true,
+                            message: 'Please input your username!',
+                        }]
+
                     })(<Input/>)
                 }</Form.Item>
                 <Form.Item label="Password" hasFeedback></Form.Item>
