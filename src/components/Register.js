@@ -7,11 +7,12 @@ class RegeistrationForm extends Component {
             <Form>
                 <Form.Item label="Username"></Form.Item>
                 <Form.Item label="Password" hasFeedback></Form.Item>
-                <Form.Item label="Username"></Form.Item>
+                <Form.Item label="Confirm Password" hasFeedback></Form.Item>
             </Form>
         )
     }
 }
 
+// How to understand this line?
 const Register = Form.create({name: 'register'})(RegeistrationForm);
 export default Register;
