@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Form} from 'antd';
 
-class RegeistrationForm extends Component {
+class RegistrationForm extends Component {
     render() {
         return (
             <Form>
@@ -14,5 +14,5 @@ class RegeistrationForm extends Component {
 }
 
 // How to understand this line?
-const Register = Form.create({name: 'register'})(RegeistrationForm);
+const Register = Form.create({name: 'register'})(RegistrationForm);
 export default Register;
