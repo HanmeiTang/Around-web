@@ -1,0 +1,52 @@
+<html>
+<header>
+    <script>
+        // Recap
+        // 1. IIFE ()()
+        // 2. Callback
+
+        // Example, a function returns a function
+        function func1(rule) {
+            if (rule === "+") {
+                return function (a, b) {
+                    console.log(a + b)
+                }
+            } else if (rule === "-") {
+                return function (a, b) {
+                    console.log(a - b)
+                }
+            } else {
+                return function (a, b) {
+                    console.log(a, b)
+                }
+            }
+        }
+
+        // // Demo
+        // let add = func1('+');
+        // add(2, 6);
+        //
+        // let minus = func1('+');
+        // minus(2, 6);
+
+
+        // The prototype of a js function is "object"
+
+        // High order function (HOF) 高階函數
+        // A function has a function-type argument
+        // or a function has a function-type returned
+
+        // HOF --> High order components (HOC) 高階組件
+        // "class" is a function in JS
+
+        // features of a HOC
+        // 1. 接收一個組件
+        // 2. 返回一個新的組件
+
+
+    </script>
+</header>
+<body>
+<h1> HOC</h1>
+</body>
+</html>
