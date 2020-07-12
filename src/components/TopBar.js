@@ -7,6 +7,7 @@ class TopBar extends Component {
             <div>
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
+                    <span className="App-title">Around</span>
                     <p>
                         Edit <code>src/App.js</code> and save to reload.
                     </p>
