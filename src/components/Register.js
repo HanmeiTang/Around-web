@@ -19,7 +19,6 @@ class RegistrationForm extends Component {
         };
 
         return (
-
             <Form {...formItemLayout}>
                 <Form.Item label="Username">{
                     getFieldDecorator("username", {
