@@ -72,4 +72,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ```bash
 yarn create react-app around-web
 yarn add antd@3
+ yarn add react-router-dom@4
 ```
