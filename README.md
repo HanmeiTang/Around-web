@@ -72,5 +72,19 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ```bash
 yarn create react-app around-web
 yarn add antd@3
- yarn add react-router-dom@4
+yarn add react-router-dom@4
+
+# react-router-dom is a library
+to realize "sigle page application" (SPA)
+1.只有一個完整頁面
+2. 點擊頁面中的連結，比如去page2，頁面不會被刷新，也就是不會向後端口發送請求
+3. 頁面變化只是局部變化
+4. 那麼不同頁面中的數據如何獲取？通過Ajax實現，拿到數據並不刷新數據
+SPA的產生讓server成為一個提供數據的API，數據展現在前端完成
+
+* 那麼什麼是ROUTER?
+路由的本質就是一對KEY-VAL Pair，key = PATH, val = Resource
+resource對前端來說是一個components，對後端是一個函數
+
+所以現在的問題是，1.如何找key，2.如何對應到val
 ```
