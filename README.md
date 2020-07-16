@@ -73,6 +73,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 yarn create react-app around-web
 yarn add antd@3
 yarn add react-router-dom@4
+yarn add react-grid-gallery
 
 # react-router-dom is a library
 to realize "sigle page application" (SPA)
