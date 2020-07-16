@@ -52,6 +52,8 @@ class App extends Component {
                 />
 
                 <Main
+                    // 子組件傳data給父組件
+                    // 通過callback function實現
                     handleLoginSucceed={this.handleLoginSucceed}
                     isLoggedIn={this.state.isLoggedIn}
                 />

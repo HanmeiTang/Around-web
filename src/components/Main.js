@@ -20,9 +20,11 @@ class Main extends Component {
         return (
             <div className="main">
                 <Switch>
-                    <Route path="/login" component={this.getLogin}/>
+                    {/*render accepts a function*/}
+                    <Route path="/login" render={this.getLogin}/>
+                    {/*component accepts a component only*/}
                     <Route path="/register" component={Register}/>
-                    <Route path="/home" component={this.getHome}/>
+                    <Route path="/home" render={this.getHome}/>
                     <Route render={this.getLogin}/>
                 </Switch>
             </div>
