@@ -13,15 +13,20 @@
 
 .App-title {
     float: left;
+    /*An element's padding is the space between its content and its border.*/
+    /*The padding-top property sets the top padding (space) of an element.*/
     padding-top: 15px;
     font-weight: bold;
     font-size: 17px;
     color: #61dafb;
 }
 
+/*Using media queries are a popular technique for delivering
+a tailored style sheet (responsive web design) to desktops,
+laptops, tablets, and mobile phones.*/
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
-        animation: App-logo-spin infinite 20s linear;
+        animation: App-logo-spin infinite 10s linear;
     }
 }
 
