@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Promise</h1>
+<script>
+    // callback fn
+    // 這是一個同步的例子 sync func
+    // 執行下一步必須先完成上一步
+    // const buyPeetsCoffee = () => {
+    //     const order = orderCoffee();
+    //     const pay = payForCoffee();
+    //     const wait = waitForCoffee();
+    //     const coffee = getCoffee();
+    //     return coffee;
+    // };
+
+    // sync => async
+    function task(str, cb) {
+        console.log(str);
+        cb();
+    }
+
+    // 這個是異步的，有順序，但是很多層
+    // 會導致回調黑洞 callback hell
+    // task("order", function(){
+    //     task("pay", function() {
+    //         task("wait")
+    //     }
+    // }
+
+    // solution: Promise
+    // 這個函數'function(resolve, reject){}' 叫執行者 executor
+    // 在這個executor規定如何執行resolve和reject
+    // 可以只傳resolve，也可以傳resolve & reject
+    // promise has 3 states: pending, resolve, reject
+    // pending: 創建後就是pending，表示進行中
+    // resolve: 用resolve()函數把pending變成resolve
+    // reject: 用reject()函數把pending變成reject
+
+    var p = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            let number = Math.random() * 100;
+            console.log(number.toFixed(2));
+            number > 60 ? resolve('yes') : reject('no');
+        }, 1000)
+    });
+
+    p.then(function (success) {
+        console.log("success -->", success)
+    }, function (err) {
+        console.log("error -->", err)
+    })
+    // TODO: 實現買咖啡功能
+
+    // 回來繼續講fetch
+
+</script>
+
+</body>
+</html>
