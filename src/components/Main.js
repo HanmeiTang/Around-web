@@ -1,9 +1,10 @@
 // This defines the main widget part of the login page
-import React, {Component} from 'react';
-import Register from "./Register";
+import React, {Component} from "react";
 import {Switch, Route, Redirect} from "react-router-dom";
+
+import Register from "./Register";
 import Login from "./Login";
-import Home from './Home';
+import Home from "./Home";
 
 class Main extends Component {
     getLogin = () => {
