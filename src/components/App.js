@@ -4,6 +4,30 @@ import Main from './Main.js';
 import '../styles/App.css';
 import {TOKEN_KEY} from '../constants';
 
+// Features of this app:
+// 1. login
+// 2. register
+// 3. persistent login
+// 4. logout
+// * TOKEN saved in local storage, google "window.localStorage"
+// * Token is not destroyed by browser refresh
+
+// Structure of this app
+// App
+// |- TopBar
+// |- Main
+//      |- Login --> Generate token, and saved at window.localStorage
+//      |- Register
+//      |- Logout --> Delete token.
+
+// Q: So we need to use Token twice, where to store the Token?
+// A: App
+
+// Data Communication: Sibling has no relationship
+// the best design: Generate token --> --> super super parent 'App'
+// 1. child modifies parent node
+// 2. the 2nd child node get token from its parent
+
 
 class App extends Component {
     state = {
