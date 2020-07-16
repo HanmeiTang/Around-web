@@ -21,6 +21,12 @@
     color: #61dafb;
 }
 
+.logout {
+    float: right;
+    padding-top: 13px;
+    padding-right: 13px;
+}
+
 /*Using media queries are a popular technique for delivering
 a tailored style sheet (responsive web design) to desktops,
 laptops, tablets, and mobile phones.*/
