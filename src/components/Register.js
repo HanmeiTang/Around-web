@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Form, Input, Button, message} from 'antd';
-import {API_ROOT} from "../constants.js";
+
 import {Link} from "react-router-dom";
+import {API_ROOT} from "../constants.js";
 
 class RegistrationForm extends Component {
     state = {
