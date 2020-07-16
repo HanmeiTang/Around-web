@@ -1,5 +1,7 @@
 /* Note that third-party import should be listed first */
 /* And customization will override those settings */
+
+/*add antd style in App.css*/
 @import "~antd/dist/antd.css";
 @import "TopBar.css";
 @import "Main.css";
