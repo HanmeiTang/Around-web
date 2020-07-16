@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import {Form, Input, Button} from 'antd';
+import {Form, Input, Button, message} from 'antd';
+import {API_ROOT} from "../constants.js";
+import Link from "react-router-dom";
 
 class RegistrationForm extends Component {
     state = {
         confirmDirty: false,
+        autoCompleteResult: [], // TODO: What is this?
     };
 
     render() {
@@ -11,6 +14,7 @@ class RegistrationForm extends Component {
         // 1. 獲取數據：The usage of a form is to get data
         // 2. 表單驗證：FE （獲取時驗證；提交submit時驗證） + BE
         const {getFieldDecorator} = this.props.form;
+
         const formItemLayout = {
             labelCol: {
                 xs: {span: 24},
@@ -22,12 +26,26 @@ class RegistrationForm extends Component {
             },
         };
 
+        const tailFormItemLayout = {
+            wrapperCol: {
+                xs: {
+                    span: 24,
+                    offset: 0,
+                },
+                sm: {
+                    span: 16,
+                    offset: 8,
+                },
+            },
+        };
+
         return (
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-
                 <Form.Item label="Username">{
                     // Define how data is collected
                     // username is a id, must be unique
+
+                    // This is username input box
                     getFieldDecorator("username", {
                         rules: [{
                             required: true,
@@ -37,6 +55,7 @@ class RegistrationForm extends Component {
                 }</Form.Item>
 
                 <Form.Item label="Password" hasFeedback>{
+                    // This is 1st password input box
                     getFieldDecorator("password", {
                         // 我們想實現一點功能
                         // 希望密碼必須遵守一些規則
@@ -56,6 +75,7 @@ class RegistrationForm extends Component {
                 }</Form.Item>
 
                 <Form.Item label="Confirm Password" hasFeedback>{
+                    // This is 2nd password input box
                     getFieldDecorator("confirm", {
                         rules: [{
                             required: true,
@@ -64,40 +84,52 @@ class RegistrationForm extends Component {
                             {
                                 validator: this.compareToFirstPassword,
                             }]
-                    })(<Input.Password/>)
+                    })(<Input.Password onBlur={this.handleConfirmBlur}/>)
                 }
                 </Form.Item>
-                <Form.Item>
+                <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">
                         Register
                     </Button>
+                    {/*<p>I already have an account, go back to <Link to="/login">login</Link></p>*/}
                 </Form.Item>
+
             </Form>
         );
     }
 
     // Send a HTTP request
+    // used to register a user
+    // AJAX is very complex
+    // we use 'fetch' here instead
+    // 'fetch()' is a feature provided by ES6
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                // fetch代碼基礎是promise，但做過一點包裝
+                // 和原生promise有點點區別
+                fetch(`${API_ROOT}/signup`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        username: values.username,
+                        password: values.password,
+                    })
+                }).then(response => {
+                    console.log('response -> ', response);
+                    if (response.ok) {
+                        return response.text();
+                    }
+                }).then(result => {
+                    console.log('success -> ', result);
+                })
             }
         });
     };
 
-    // TODO: Why you need a rule?
-    validateToNextPassword = (rule, value, callback) => {
-        const {form} = this.props;
-        // has a value && comparator passed
-        if (value && this.state.confirmDirty) {
-            form.validateFields(['confirm'], {force: true});
-        }
-        callback();
-    };
-
-    // TODO: Why you need a rule?
     compareToFirstPassword = (rule, value, callback) => {
+        console.log("compareToFirstPassword");
         console.log("this value is ", value);
         const {form} = this.props;
         if (value && value !== form.getFieldValue('password')) {
@@ -107,12 +139,21 @@ class RegistrationForm extends Component {
         }
     };
 
+    // Note this 'rule' is not used
+    validateToNextPassword = (rule, value, callback) => {
+        const {form} = this.props;
+        // has a value && comparator passed
+        if (value && this.state.confirmDirty) {
+            form.validateFields(['confirm'], {force: true});
+        }
+        callback();
+    };
+
+    // todo: ?? 哪裡用啊
     handleConfirmBlur = e => {
         const {value} = e.target;
         this.setState({confirmDirty: this.state.confirmDirty || !!value});
     };
-
-
 }
 
 // How to understand this line?
