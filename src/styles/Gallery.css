@@ -3,7 +3,7 @@
     min-height: 1px;
     width: 100%;
     border: 1px solid #ddd;
-    overflow: auto
+    overflow: auto;
 }
 
 .gallery-thumbnail {
