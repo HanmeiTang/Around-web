@@ -11,3 +11,6 @@ export const AUTH_HEADER = 'Bearer';
 export const POST_TYPE_IMAGE = 'image';
 export const POST_TYPE_VIDEO = 'video';
 export const POST_TYPE_UNKNOWN = 'unknown';
+// Test login account
+// usernmae: abcdefg
+// password: 123
