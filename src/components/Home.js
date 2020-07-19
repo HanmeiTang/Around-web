@@ -22,7 +22,7 @@ class Home extends React.Component {
         isLoadingPosts: false,
         error: '',
         posts: [],
-    }
+    };
 
     componentDidMount() {
         // console.log(navigator.geolocation);
@@ -44,11 +44,11 @@ class Home extends React.Component {
         localStorage.setItem(POS_KEY, JSON.stringify({lat: latitude, lon: longitude}));
         this.setState({isLoadingGeoLocation: false, error: ''});
         this.loadNearbyPosts();
-    }
+    };
 
     onFailedLoadGeoLocation = () => {
         this.setState({isLoadingGeoLocation: false, error: 'Failed to load geo location.'});
-    }
+    };
 
     loadNearbyPosts = () => {
         const {lat, lon} = JSON.parse(localStorage.getItem(POS_KEY));
@@ -74,7 +74,7 @@ class Home extends React.Component {
                 console.error(e);
                 this.setState({isLoadingPosts: false, error: e.message});
             });
-    }
+    };
 
     renderImagePosts() {
         const {posts} = this.state;
