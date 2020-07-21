@@ -18,9 +18,9 @@ class AroundMarker extends React.Component {
     };
 
     render() {
-        // const {user, message, url, location} = this.props.post;
         const {user, message, url, location, type} = this.props.post;
         const {lat, lon} = location;
+
         const isImagePost = type === 'image';
         const customIcon = isImagePost ? undefined : {
             url: blueMarkerUrl,
@@ -32,7 +32,7 @@ class AroundMarker extends React.Component {
                 position={{lat, lng: lon}}
                 onMouseOver={isImagePost ? this.handleToggle : undefined}
                 onMouseOut={isImagePost ? this.handleToggle : undefined}
-                onClick={isImagePost ? undefined : this.handleToggle}
+                onClick={isImagePost ? this.handleToggle: undefined}
                 icon={customIcon}
             >
                 {this.state.isOpen ? (
@@ -46,7 +46,6 @@ class AroundMarker extends React.Component {
                     </InfoWindow>
                 ) : null}
             </Marker>
-
         );
     }
 }

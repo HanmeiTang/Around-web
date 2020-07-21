@@ -7,17 +7,22 @@ import {
     GoogleMap,
 } from "react-google-maps";
 
+import AroundMarker from './AroundMarker';
+
 class NormalAroundMap extends Component {
+
     getMapRef = (mapInstance) => {
         this.map = mapInstance;
         window.map = mapInstance;
     };
 
     reloadMarker = () => {
-        const center = this.getCenter();
+        const center = this.map.getCenter();
+        const centerObj = {lat: center.lat(), lon: center.lng()};
+        console.log(centerObj);
+
         const radius = this.getRadius();
-        // this.props.loadNearbyPosts(center, radius);
-        this.props.loadPostsByTopic(center, radius);
+        this.props.loadPostsByTopic(centerObj, radius);
     };
 
     getCenter() {
@@ -45,11 +50,11 @@ class NormalAroundMap extends Component {
                 onDragEnd={this.reloadMarker}
                 onZoomChanged={this.reloadMarker}
             >
+                {this.props.posts.map((post) => <AroundMarker post={post} key={post.url}/>)}
             </GoogleMap>
         );
     }
 }
 
 const AroundMap = withScriptjs(withGoogleMap(NormalAroundMap));
-
 export default AroundMap;
