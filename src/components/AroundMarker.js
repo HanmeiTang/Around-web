@@ -29,6 +29,7 @@ class AroundMarker extends React.Component {
 
         return (
             <Marker
+                position={{lat, lng: lon}}
                 onMouseOver={isImagePost ? this.handleToggle : undefined}
                 onMouseOut={isImagePost ? this.handleToggle : undefined}
                 onClick={isImagePost ? undefined : this.handleToggle}
@@ -45,6 +46,7 @@ class AroundMarker extends React.Component {
                     </InfoWindow>
                 ) : null}
             </Marker>
+
         );
     }
 }
